@@ -1,0 +1,22 @@
+@keyframes transform {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.5) rotate(180deg);
+    }
+  }
+  
+  .ring {
+    animation: transform 4s infinite ease-in-out;
+  }
+  
+  .necklace {
+    opacity: 0;
+    animation: transform 4s infinite ease-in-out;
+    animation-delay: 2s;
+  }
+  
+  .ring:hover, .necklace:hover {
+    animation-play-state: paused;
+  }

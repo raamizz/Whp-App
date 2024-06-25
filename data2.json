@@ -1,0 +1,58 @@
+{
+  "paymentDetails": {
+    "paymentId": "pay_O8hoqXAEsLDZub",
+    "orderId": "order_O8hoQ9W9zZyzBE",
+    "signature": "99ddcf64e852e064e368e7c401cb98357bb54485fdefdf5e4305f7649d4cdd03"
+  },
+  "shippingAddress": [
+    {
+      "addressId": 50,
+      "addressType": "home",
+      "fullAddress": "l.g 105,sunder baug,indira nagar",
+      "country": "IN",
+      "state": "MH",
+      "city": "Mumbai",
+      "landmark": null,
+      "pincode": "400069"
+    }
+  ],
+  "billingAddress": [
+    {
+      "addressId": 50,
+      "addressType": "home",
+      "fullAddress": "l.g 105,sunder baug,indira nagar",
+      "country": "IN",
+      "state": "MH",
+      "city": "Mumbai",
+      "landmark": null,
+      "pincode": "400069"
+    }
+  ],
+  "productDetails": {
+    "products": [
+      {
+        "productId": "143",
+        "productAmount": "43638.40",
+        "quantity": "1",
+        "productTotal": "43638.4",
+        "discountAmount": "0",
+        "discountedTotal": "43638.4"
+      },{
+        "id": 36,
+        "customerId": 20,
+        "schemeType": "gold",
+        "monthlyAmount": "2000",
+        "discountAmount": "1000",
+        "balanceAmount": "23000",
+        "totalAmount": "23000",
+        "enrollDate": "2024-05-29",
+        "created_at": "2024-05-29T06:01:13.000000Z",
+        "updated_at": "2024-05-29T06:01:13.000000Z"
+      }
+    ],
+    "coupons": [{ "couponCode": "", "discountPrice": 0 }],
+    "productTotal": "43638",
+    "discountedTotal": "43638",
+    "shippingCharges": "10"
+  }
+}

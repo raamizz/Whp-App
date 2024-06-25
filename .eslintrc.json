@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "react/no-unescaped-entities": "off" // Disable this rule for the entire project
+  },
+  "extends": "next/core-web-vitals"
+}

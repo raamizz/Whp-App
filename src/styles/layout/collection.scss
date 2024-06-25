@@ -1,0 +1,42 @@
+.collection-item {
+    .bg-img img {
+        transition: all ease 0.8s;
+    }
+
+    &:hover {
+        .bg-img img {
+            transform: scale(1.08);
+        }
+    }
+
+    .collection-name {
+        position: absolute;
+        left: 50%;
+        bottom: 2%;
+        transform: translate(-50%);
+        background-color: #f7f7f7;
+
+        &:hover {
+            background-color: #cac7c7;
+            color: var(--black);
+        }
+    }
+}
+
+.collection-block.style-six .list-collection .swiper {
+    overflow: unset;
+}
+
+.trending-block {
+    .trending-item {
+        .bg-img img {
+            transition: all ease 0.5s;
+        }
+
+        &:hover {
+            .bg-img img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

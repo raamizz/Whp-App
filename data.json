@@ -1,0 +1,379 @@
+{
+  "customerOrders": [
+    {
+      "id": 37,
+      "productDetails": [
+        {
+          "productAmount": "40027.68",
+          "quantity": "1",
+          "productTotal": "40027.68",
+          "discountAmount": "0",
+          "discountedTotal": "40027.68",
+          "productDetails": [
+            {
+              "productId": 141,
+              "SKU": "GBRD23112335",
+              "variantId": null,
+              "isParent": null,
+              "title": "Gold Bracelet",
+              "displayTitle": "Gold Bracelet",
+              "shortDesc": "Delivery within 24-48 hours",
+              "longDesc": null,
+              "url": "gold-bracelet",
+              "tags": ["Jewellery", "Gold Bracelet", "Gold", "Bracelet"],
+              "collectionName": null,
+              "shopFor": ["Women"],
+              "occasion": "Wedding",
+              "theme": "Wedding",
+              "length": null,
+              "breadth": null,
+              "height": null,
+              "weightRange": "2-5 gms",
+              "addDate": "2024-03-20",
+              "lastModificationDate": null,
+              "created_at": "2024-03-20T09:45:12.000000Z",
+              "updated_at": "2024-05-21T06:22:58.000000Z",
+              "sizeId": null,
+              "productSize": null,
+              "productQty": 9,
+              "attributeId": 128,
+              "preSalesProductQueries": null,
+              "isReplaceable": 0,
+              "isReturnable": 0,
+              "isInternationalShippingAvailable": 0,
+              "customizationAvailability": 0,
+              "fastDelivery": 0,
+              "tryAtHome": 0,
+              "isActive": 1,
+              "grossWeight": null,
+              "netWeight": null,
+              "productAttributes": {
+                "goldDetails": [
+                  {
+                    "goldCertifiedBy": null,
+                    "goldSetting": null
+                  }
+                ],
+                "gemstoneDetails": null,
+                "diamondDetails": null,
+                "silverDetails": [
+                  {
+                    "poojaArticle": null,
+                    "utensils": null,
+                    "silverWeight": null
+                  }
+                ]
+              },
+              "discountId": 13,
+              "discountCategory": "Making Charges",
+              "discountActive": 1,
+              "typeOfDiscount": "Percentage",
+              "discountValue": "15.00",
+              "discountAmount": "1415.88",
+              "discountPrice": "40027.68",
+              "offerStartDate": "2024-03-01",
+              "offerEndDate": "2024-04-06",
+              "mediaId": 37,
+              "imageDetails": [
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/141/1710927917_GBRD23112335_1.jpg",
+                  "order": 0,
+                  "alt_text": null
+                },
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/141/1710927917_GBRD23112335_2.jpg",
+                  "order": 1,
+                  "alt_text": null
+                },
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/141/1710927917_GBRD23112335_3.jpg",
+                  "order": 2,
+                  "alt_text": null
+                },
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/141/1710927917_GBRD23112335_4.jpg",
+                  "order": 3,
+                  "alt_text": null
+                },
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/141/1710927912_GBRD23112335_5.jpg",
+                  "order": 4,
+                  "alt_text": null
+                }
+              ],
+              "videoDetails": null,
+              "materialId": 123,
+              "metalType": "Gold",
+              "metalPurity": "22KT",
+              "metalWeight": "4.3200",
+              "metalRate": "30797.2800",
+              "makingType": "percentage",
+              "makingChargesPerGrams": "30.0000",
+              "makingCharges": "9239.1840",
+              "gst": "1207.0939",
+              "additionalCost": "200.0000",
+              "productPrice": "41443.5579",
+              "stoneDetails": null,
+              "diamondDetails": null,
+              "review": []
+            }
+          ]
+        }
+      ],
+      "customerId": 29,
+      "employeeId": null,
+      "billingAddressId": [
+        {
+          "address_id": 97,
+          "customer_id": 29,
+          "address_type": "work",
+          "full_address": "Khetan Complex, Opposite to Agresan Bhavan",
+          "country": "India",
+          "state": "Maharashtra",
+          "city": "Akola",
+          "landmark": null,
+          "pincode": 444001,
+          "created_at": "2024-05-21T09:50:29.000000Z",
+          "updated_at": "2024-05-21T09:50:29.000000Z"
+        }
+      ],
+      "shippingAddressId": [
+        {
+          "address_id": 97,
+          "customer_id": 29,
+          "address_type": "work",
+          "full_address": "Khetan Complex, Opposite to Agresan Bhavan",
+          "country": "India",
+          "state": "Maharashtra",
+          "city": "Akola",
+          "landmark": null,
+          "pincode": 444001,
+          "created_at": "2024-05-21T09:50:29.000000Z",
+          "updated_at": "2024-05-21T09:50:29.000000Z"
+        }
+      ],
+      "couponId": null,
+      "orderNo": "WHP664c6eb60a772",
+      "razorpayOrderNo": "order_OD6IHHySRqCclc",
+      "productTotal": "40027.00",
+      "discountedTotal": "40027.00",
+      "balanceAmount": "0.00",
+      "paymentStatus": "Paid",
+      "orderStatus": "1",
+      "remarks": null,
+      "created_at": "2024-05-21T09:51:50.000000Z",
+      "updated_at": "2024-05-21T09:51:54.000000Z",
+      "payments": [
+        {
+          "paymentId": 38,
+          "razorpayPaymentNo": "pay_OD6In3MnJnO8mk",
+          "date": "2024-05-21",
+          "paymentMethod": "upi",
+          "transactionNo": "63689DF5A1BDF085A29C25625E94BCBE",
+          "transactionDetails": "{\"vpa\":\"rutujatranspost@ybl\",\"rrn\":\"476384785277\",\"upi_transaction_id\":\"63689DF5A1BDF085A29C25625E94BCBE\"}",
+          "orderId": 37,
+          "amount": 40027,
+          "created_at": "2024-05-21T09:51:54.000000Z",
+          "updated_at": "2024-05-21T09:51:54.000000Z"
+        }
+      ],
+      "order_list": {
+        "id": 1,
+        "name": "Order Placed",
+        "created_at": "2024-04-30T15:10:55.000000Z",
+        "updated_at": "2024-04-30T15:10:55.000000Z"
+      }
+    },
+    {
+      "id": 38,
+      "productDetails": [
+        {
+          "productAmount": "79115.37",
+          "quantity": "1",
+          "productTotal": "79115.37",
+          "discountAmount": "0",
+          "discountedTotal": "79115.37",
+          "productDetails": [
+            {
+              "productId": 223,
+              "SKU": "GNCKLD21002286",
+              "variantId": null,
+              "isParent": null,
+              "title": "Rose Gold Necklace",
+              "displayTitle": "Rose Gold Necklace",
+              "shortDesc": "Delivery within 7-21 days",
+              "longDesc": null,
+              "url": "rose-gold-necklace",
+              "tags": [
+                "Jewellery",
+                "rose gold",
+                "gold necklace",
+                "necklace",
+                "gold",
+                "18kt"
+              ],
+              "collectionName": null,
+              "shopFor": ["Women"],
+              "occasion": "Wedding",
+              "theme": "Wedding",
+              "length": null,
+              "breadth": null,
+              "height": null,
+              "weightRange": "10 gms and above",
+              "addDate": "2024-04-17",
+              "lastModificationDate": null,
+              "created_at": "2024-04-17T04:48:45.000000Z",
+              "updated_at": "2024-05-21T06:22:57.000000Z",
+              "sizeId": 220,
+              "productSize": null,
+              "productQty": 19,
+              "attributeId": 210,
+              "preSalesProductQueries": null,
+              "isReplaceable": 0,
+              "isReturnable": 0,
+              "isInternationalShippingAvailable": 0,
+              "customizationAvailability": 0,
+              "fastDelivery": 0,
+              "tryAtHome": 0,
+              "isActive": 1,
+              "grossWeight": null,
+              "netWeight": null,
+              "productAttributes": {
+                "goldDetails": [
+                  {
+                    "goldCertifiedBy": null,
+                    "goldSetting": null
+                  }
+                ],
+                "gemstoneDetails": null,
+                "diamondDetails": null,
+                "silverDetails": [
+                  {
+                    "poojaArticle": null,
+                    "utensils": null,
+                    "silverWeight": null
+                  }
+                ]
+              },
+              "discountId": 89,
+              "discountCategory": "Making Charges",
+              "discountActive": 1,
+              "typeOfDiscount": "Percentage",
+              "discountValue": "15.00",
+              "discountAmount": "2870.70",
+              "discountPrice": "79115.37",
+              "offerStartDate": "2024-03-31",
+              "offerEndDate": "2024-05-11",
+              "mediaId": 118,
+              "imageDetails": [
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/223/1713329331_211120_032036_466_718_0_1%20(1).jpg",
+                  "order": 0,
+                  "alt_text": null
+                },
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/223/1713329331_211120_032036_466_718_0_2%20(1).jpg",
+                  "order": 1,
+                  "alt_text": null
+                },
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/223/1713329331_211120_032036_466_718_0_3%20(1).jpg",
+                  "order": 2,
+                  "alt_text": null
+                },
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/223/1713329331_211120_032036_482_360_0_4%20(1).jpg",
+                  "order": 3,
+                  "alt_text": null
+                },
+                {
+                  "image_path": "https://wamanharipethe.s3.amazonaws.com/products/images/223/1713329325_211120_032036_482_360_0_5%20(1).jpg",
+                  "order": 4,
+                  "alt_text": null
+                }
+              ],
+              "videoDetails": null,
+              "materialId": 205,
+              "metalType": "Gold",
+              "metalPurity": "18KT",
+              "metalWeight": "9.7000",
+              "metalRate": "60460.1000",
+              "makingType": "percentage",
+              "makingChargesPerGrams": "30.0000",
+              "makingCharges": "18138.0300",
+              "gst": "2387.9439",
+              "additionalCost": "1000.0000",
+              "productPrice": "81986.0739",
+              "stoneDetails": null,
+              "diamondDetails": null,
+              "review": []
+            }
+          ]
+        }
+      ],
+      "customerId": 29,
+      "employeeId": 1,
+      "billingAddressId": [
+        {
+          "address_id": 97,
+          "customer_id": 29,
+          "address_type": "work",
+          "full_address": "Khetan Complex, Opposite to Agresan Bhavan",
+          "country": "India",
+          "state": "Maharashtra",
+          "city": "Akola",
+          "landmark": null,
+          "pincode": 444001,
+          "created_at": "2024-05-21T09:50:29.000000Z",
+          "updated_at": "2024-05-21T09:50:29.000000Z"
+        }
+      ],
+      "shippingAddressId": [
+        {
+          "address_id": 97,
+          "customer_id": 29,
+          "address_type": "work",
+          "full_address": "Khetan Complex, Opposite to Agresan Bhavan",
+          "country": "India",
+          "state": "Maharashtra",
+          "city": "Akola",
+          "landmark": null,
+          "pincode": 444001,
+          "created_at": "2024-05-21T09:50:29.000000Z",
+          "updated_at": "2024-05-21T09:50:29.000000Z"
+        }
+      ],
+      "couponId": null,
+      "orderNo": "WHP664c71a047bb5",
+      "razorpayOrderNo": "order_OD6VCXUnNyL9y4",
+      "productTotal": "79115.00",
+      "discountedTotal": "79115.00",
+      "balanceAmount": "0.00",
+      "paymentStatus": "Paid",
+      "orderStatus": "2",
+      "remarks": null,
+      "created_at": "2024-05-21T10:04:16.000000Z",
+      "updated_at": "2024-05-21T10:05:32.000000Z",
+      "payments": [
+        {
+          "paymentId": 39,
+          "razorpayPaymentNo": "pay_OD6VfyZMiz5uBp",
+          "date": "2024-05-21",
+          "paymentMethod": "card",
+          "transactionNo": "818462",
+          "transactionDetails": "{\"id\":\"card_OD6Vg3tOIKl0Np\",\"entity\":\"card\",\"name\":\"\",\"last4\":\"0000\",\"network\":\"Unknown\",\"type\":\"unknown\",\"issuer\":null,\"international\":null,\"emi\":false,\"sub_type\":null,\"token_iin\":null}",
+          "orderId": 38,
+          "amount": 79115,
+          "created_at": "2024-05-21T10:04:20.000000Z",
+          "updated_at": "2024-05-21T10:04:20.000000Z"
+        }
+      ],
+      "order_list": {
+        "id": 2,
+        "name": "Order Accepted",
+        "created_at": "2024-04-30T15:10:55.000000Z",
+        "updated_at": "2024-04-30T15:10:55.000000Z"
+      }
+    }
+  ]
+}

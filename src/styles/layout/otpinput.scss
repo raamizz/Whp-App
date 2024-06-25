@@ -1,0 +1,21 @@
+.otpInputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // width: 10rem;
+}
+
+.otpInput {
+  width: 8rem;
+  height: 3rem;
+  border-bottom: 2px solid black;
+  background: transparent;  
+  text-align: center;
+  font-size: 1.25rem;
+
+  &:focus {
+    outline: none;
+    border-color: #E26178;
+    box-shadow: 0 0 0 1px #792d3b;
+  }
+}

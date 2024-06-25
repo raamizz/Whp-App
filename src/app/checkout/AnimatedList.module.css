@@ -1,0 +1,12 @@
+.animated-list-item {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .animated-list-item.selected {
+    transform: translateY(calc(var(--selected-index) * -100%));
+  }
+  
+  .animated-list-item:not(.selected) {
+    transform: translateY(calc(var(--selected-index) * 100%));
+  }
+  
