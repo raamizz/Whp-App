@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">WHP</string>
+    <string name="title_activity_main">WHP</string>
+    <string name="package_name">whp.app</string>
+    <string name="custom_url_scheme">whp.app</string>
+</resources>
