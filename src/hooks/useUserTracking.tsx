@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useIdleTimer from "./useIdleTime";
 import axios from "axios";
-import { baseUrl, userTracking } from "@/utils/constants";
+import { baseUrl, userTracking, graphqlbaseUrl } from "@/utils/constants";
+import { ApolloClient, InMemoryCache, HttpLink, gql } from "@apollo/client";
 import { useUser } from "@/context/UserContext";
 
 type ClickHistory = {
@@ -15,27 +16,44 @@ const useUserTracking = () => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<string>("");
   const [timeOnPage, setTimeOnPage] = useState<number>(0);
-  // const [pageHeader, setPageHeader] = useState<string>("");
   const [clicksOnPage, setClicksOnPage] = useState<number>(0);
   const [clickHistory, setClickHistory] = useState<ClickHistory[]>([]);
   const [nextPageId, setNextPageId] = useState<string | null>(null);
   const [apiCalled, setApiCalled] = useState(false);
-  const isIdle = useIdleTimer(180000);
+  const isIdle = useIdleTimer(600000);
   const [post, setPost] = useState<any>({});
   const { userDetails } = useUser();
 
   const callTrackingApi = async (postData: any) => {
     console.log("PostDAta", postData);
     try {
-      const response: any = await axios.post(
-        `${baseUrl}${userTracking}`,
-        postData
-      );
-      console.log("Response for UserTracking", response.data);
+      const client = new ApolloClient({
+        uri: graphqlbaseUrl,
+        cache: new InMemoryCache(),
+      });
+
+      const STORE_USER_TRACKING = gql`
+        mutation StoreUserTracking($userTracking: UserTrackingInput!) {
+          StoreUserTracking(userTracking: $userTracking) {
+            status
+            pageId
+          }
+        }
+      `;
+
+      const { data } = await client.mutate({
+        mutation: STORE_USER_TRACKING,
+        variables: {
+          userTracking: postData,
+        },
+        fetchPolicy: "no-cache",
+      });
+
+      console.log("Response for UserTracking", data.StoreUserTracking);
       if (postData.isIdle === 1) {
         setNextPageId(null);
       } else {
-        setNextPageId(response.data.pageId);
+        setNextPageId(data.StoreUserTracking.pageId);
       }
     } catch (error: any) {
       console.log(error);

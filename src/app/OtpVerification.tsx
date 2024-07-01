@@ -40,7 +40,7 @@ const OtpVerification = ({
   const [verificationId, setVerificationId] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [verifying,setVerifying]= useState(false)
+  const [verifying, setVerifying] = useState(false);
   const [firebaseError, setFirebaseError] = useState(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { logIn, userState } = useUser();
@@ -73,17 +73,17 @@ const OtpVerification = ({
       );
       setVerificationId(result.verificationId);
       setIsOtpSent(true); // Update state to indicate OTP has been sent
-      setErrorMessage(null)
+      setErrorMessage(null);
       console.log("OTP sent successfully");
     } catch (error) {
       console.error("Error sending OTP:", error);
-      setLoading(false)
-       if (error.message.includes("reCAPTCHA has already been rendered")) {
-      window.location.href = location.pathname;
-       } else {
-           setErrorMessage("Invalid Number or Try again");
-       }
-   
+      setLoading(false);
+      if (error.message.includes("reCAPTCHA has already been rendered")) {
+        window.location.href = location.pathname;
+      } else {
+        setErrorMessage("Invalid Number or Try again");
+      }
+
       //  setFirebaseError(error.message);
     }
   };
@@ -115,8 +115,8 @@ const OtpVerification = ({
       logIn(); ////
       console.log("LOGIN RESPPP", response.data.user);
       const localToken = response.data.token;
-      Cookies.set("localtoken", localToken);
-      console.log("intial token", Cookies.get("localtoken"));
+      localStorage.setItem("localtoken", localToken);
+      console.log("intial token", localStorage.getItem("localtoken"));
       router.push("/");
     } catch (error: any) {
       setVerifying(false);
@@ -124,18 +124,19 @@ const OtpVerification = ({
       if (error.code === "auth/invalid-verification-code") {
         setErrorMessage("Invalid OTP. Please try again.");
       } else if (error.response) {
-      const errorMsg = typeof error.response.data === 'string' 
-                        ? error.response.data.error
-                        : JSON.stringify(error.response.data.error);
-      setErrorMessage(errorMsg);
-          console.error("Backend error data will show:", error.response.data);
-          console.error("Backend error status:", error.response.status);
-          console.error("Backend error headers:", error.response.headers);
-        } else if (error.request) {
-          console.error("No response received:", error.request);
-        } else {
-          console.error("Request setup error:", error.message);
-        }
+        const errorMsg =
+          typeof error.response.data === "string"
+            ? error.response.data.error
+            : JSON.stringify(error.response.data.error);
+        setErrorMessage(errorMsg);
+        console.error("Backend error data will show:", error.response.data);
+        console.error("Backend error status:", error.response.status);
+        console.error("Backend error headers:", error.response.headers);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Request setup error:", error.message);
+      }
       // }
     }
   };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Loader from "@/app/blog/Loader";
 import { useUser } from "@/context/UserContext";
 
 interface ModalProps {
@@ -86,7 +87,9 @@ const AddDetailsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     formik.resetForm();
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 w-full overflow-y-auto">
       <div className="bg-white p-4 sm:p-8 flex flex-col justify-between z-50 rounded-xl max-w-full sm:max-w-lg mx-4 max-h-[80vh] overflow-y-auto no-scrollbar">
         <button onClick={handleClose} className="self-end">
@@ -94,7 +97,6 @@ const AddDetailsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </button>
         <form onSubmit={formik.handleSubmit}>
           <h2 className="text-2xl font-semibold mb-4">Edit Profile</h2>
-          {/* {formError && <div className="text-red-500 mb-4">{formError}</div>} */}
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div className="mb-4">
               <div className="relative">

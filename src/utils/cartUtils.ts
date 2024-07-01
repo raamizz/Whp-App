@@ -1,13 +1,12 @@
-import {  graphqlbaseUrl } from "./constants";
+import { graphqlbaseUrl } from "./constants";
 import Cookies from "js-cookie";
 import { ApolloClient, InMemoryCache, HttpLink, gql } from "@apollo/client";
-
 
 interface CartItem {
   productDetails: {
     displayTitle: string;
     discountPrice: any;
-    productPrice:any;
+    productPrice: any;
     imageDetails: any;
   };
   gst?: any;
@@ -23,7 +22,7 @@ interface CartItem {
 
 export const fetchCartItemsFromServer = async (): Promise<CartItem[]> => {
   try {
-    const userToken = Cookies.get("localtoken");
+    const userToken = localStorage.getItem("localtoken");
     if (!userToken) {
       return [];
     }
@@ -82,21 +81,20 @@ export const fetchCartItemsFromServer = async (): Promise<CartItem[]> => {
       },
     });
 
+    const cartItemsData = data.getCustomerCart.map((item: any) => {
+      const imagePath = item.productDetails[0].imageDetails[0].image_path;
+      const discountPrice = parseInt(item.productDetails[0].discountPrice);
+      const productPrice = parseInt(item.productDetails[0].productPrice);
+      const price = isNaN(discountPrice) ? productPrice : discountPrice;
 
-   const cartItemsData = data.getCustomerCart.map((item: any) => {
-     const imagePath = item.productDetails[0].imageDetails[0].image_path;
-     const discountPrice = parseInt(item.productDetails[0].discountPrice);
-     const productPrice = parseInt(item.productDetails[0].productPrice);
-     const price = isNaN(discountPrice) ? productPrice : discountPrice;
-
-     return {
-       productId: item.productId,
-       quantity: item.quantity,
-       name: item.productDetails[0].displayTitle,
-       price: price,
-       image: imagePath,
-     };
-   });
+      return {
+        productId: item.productId,
+        quantity: item.quantity,
+        name: item.productDetails[0].displayTitle,
+        price: price,
+        image: imagePath,
+      };
+    });
 
     {
       typeof window !== "undefined" &&

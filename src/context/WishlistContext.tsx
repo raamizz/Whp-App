@@ -53,7 +53,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
   const [flashType, setFlashType] = useState<"success" | "error" | "info">(
     "info"
   );
-  const cookieToken = Cookies.get("localtoken");
+  const cookieToken = localStorage.getItem("localtoken");
 
   useEffect(() => {
     const uniqueWishlistItems = wishlistItems.filter(
@@ -65,15 +65,13 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
 
   // useEffect(() => {
   //   if (isLoggedIn) {
-  //     const userToken = Cookies.get("localtoken");
+  //     const userToken = localStorage.getItem("localtoken");
   //     if (userToken) {
   //       // setIsLoggedIn(true);
   //       setCookieToken(userToken);
   //     }
   //   }
   // }, [isLoggedIn]);
-
-
 
   useEffect(() => {
     console.log("useEffect hook called");
@@ -99,11 +97,11 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
           );
 
           if (itemsToAdd.length > 0) {
-
-            const productIds = itemsToAdd.map((item: any) => [{ productId: item.productId }]);
+            const productIds = itemsToAdd.map((item: any) => [
+              { productId: item.productId },
+            ]);
 
             const productWishlistIds = productIds.flat();
-
 
             const getAuthHeaders: any = () => {
               if (!cookieToken) return null;
@@ -118,11 +116,13 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
               cache: new InMemoryCache(),
             });
 
-            const SYNC_WISHLIST = gql`mutation AddOrUpdateWishlist($wishlist: [WishlistInput!]!) {
-            AddOrUpdateWishlist(wishlist: $wishlist) {
-              message
-            }
-          }`;
+            const SYNC_WISHLIST = gql`
+              mutation AddOrUpdateWishlist($wishlist: [WishlistInput!]!) {
+                AddOrUpdateWishlist(wishlist: $wishlist) {
+                  message
+                }
+              }
+            `;
 
             const { data } = await client.mutate({
               mutation: SYNC_WISHLIST,
@@ -154,7 +154,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
 
     fetchWishlistItems();
   }, [isLoggedIn, cookieToken]);
-   
+
   const normalizeImagePath = (
     imagePath: string | string[] | undefined
   ): string => {
@@ -223,12 +223,13 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
             cache: new InMemoryCache(),
           });
 
-          const SYNC_WISHLIST = gql`mutation 
-          AddOrUpdateWishlist($wishlist: [WishlistInput!]!) {
-            AddOrUpdateWishlist(wishlist: $wishlist) {
-              message
+          const SYNC_WISHLIST = gql`
+            mutation AddOrUpdateWishlist($wishlist: [WishlistInput!]!) {
+              AddOrUpdateWishlist(wishlist: $wishlist) {
+                message
+              }
             }
-          }`;
+          `;
 
           const { data } = await client.mutate({
             mutation: SYNC_WISHLIST,
@@ -236,7 +237,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
               wishlist: [
                 {
                   productId: product.productId,
-                }
+                },
               ],
             },
             context: {
@@ -272,11 +273,11 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
                 localStorage.getItem("wishlistItems") || "[]"
               );
             }
-            const isProductInLocalStorage = localWishlistItems.some(
+            const isProductInlocalStorage = localWishlistItems.some(
               (item: any) => item.productId === product.productId
             );
 
-            if (!isProductInLocalStorage) {
+            if (!isProductInlocalStorage) {
               const updatedWishlistItems = [
                 ...localWishlistItems,
                 {
@@ -329,11 +330,13 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
           cache: new InMemoryCache(),
         });
 
-        const SYNC_WISHLIST = gql`mutation DeleteWishlist($wishlist: [WishlistInput!]!) {
-          DeleteWishlist(wishlist: $wishlist) {
-            message
+        const SYNC_WISHLIST = gql`
+          mutation DeleteWishlist($wishlist: [WishlistInput!]!) {
+            DeleteWishlist(wishlist: $wishlist) {
+              message
+            }
           }
-        }`;
+        `;
 
         const { data } = await client.mutate({
           mutation: SYNC_WISHLIST,
@@ -341,7 +344,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
             wishlist: [
               {
                 productId: productId,
-              }
+              },
             ],
           },
           context: {
@@ -361,7 +364,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
             JSON.stringify(updatedWishlistItems)
           );
       }
-      // localStorage.setItem(
+      // localStorage..setItem(
       //   "wishlistItems",
       //   JSON.stringify(updatedWishlistItems)
       // );

@@ -30,7 +30,7 @@ const ShippingAddressList: React.FC<ShippingAddressListProps> = ({
   //   const fetchAddresses = async () => {
   //     setIsLoading(true);
   //     try {
-  //       const cookieTokenn = Cookies.get("localtoken");
+  //       const cookieTokenn = localStorage.getItem("localtoken");
   //       const response = await axios.get<{ customerAddress?: Address[] }>(
   //         `${baseUrl}/customer/getAddresses`,
   //         {
@@ -62,7 +62,7 @@ const ShippingAddressList: React.FC<ShippingAddressListProps> = ({
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const cookieTokenn = Cookies.get("localtoken");
+        const cookieTokenn = localStorage.getItem("localtoken");
 
         const getAuthHeaders = () => {
           if (!cookieTokenn) return null;

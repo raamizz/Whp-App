@@ -54,7 +54,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     if (isLoggedIn) {
-      const userToken = Cookies.get("localtoken");
+      const userToken = localStorage.getItem("localtoken");
       if (userToken) {
         setCookieToken(userToken);
       }

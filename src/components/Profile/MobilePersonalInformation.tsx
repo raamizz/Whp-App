@@ -128,7 +128,7 @@ const MobilePersonalInformation: React.FC<Props> = ({ handleComponent }) => {
     setIsLoading(true);
     setallAddress(allAddress?.filter((item) => item.address_id != id));
     try {
-      const cookieTokenn = Cookies.get("localtoken");
+      const cookieTokenn = localStorage.getItem("localtoken");
 
       const getAuthHeaders: any = () => {
         if (!cookieTokenn) return null;
@@ -173,7 +173,7 @@ const MobilePersonalInformation: React.FC<Props> = ({ handleComponent }) => {
   };
   useEffect(() => {
     const fetchData = async () => {
-      const cookieTokenn = Cookies.get("localtoken");
+      const cookieTokenn = localStorage.getItem("localtoken");
 
       const getAuthHeaders = () => {
         if (!cookieTokenn) return null;

@@ -14,7 +14,7 @@ const httpLink = new HttpLink({
 });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  const token = Cookies.get("localtoken");
+  const token = localStorage.getItem("localtoken");
   console.log("Token from authMiddleware:", token); // Debug line
   operation.setContext({
     headers: {

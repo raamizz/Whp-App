@@ -35,7 +35,7 @@ const useRecentlyViewedProducts = () => {
             recentlyViewedProducts.pop();
           }
 
-          // localStorage.setItem('recentlyViewedProducts', JSON.stringify(recentlyViewedProducts));
+          // localStorage..setItem('recentlyViewedProducts', JSON.stringify(recentlyViewedProducts));
           {
             typeof window !== "undefined" &&
               localStorage.setItem(

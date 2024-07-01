@@ -41,7 +41,7 @@ const BillingAddressList: React.FC<BillingAddressListProps> = ({
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const cookieTokenn = Cookies.get("localtoken");
+        const cookieTokenn = localStorage.getItem("localtoken");
 
         const getAuthHeaders = () => {
           if (!cookieTokenn) return null;
@@ -95,7 +95,7 @@ const BillingAddressList: React.FC<BillingAddressListProps> = ({
   //       console.log('loader loaded');
 
   //     try {
-  //       const cookieTokenn = Cookies.get('localtoken');
+  //       const cookieTokenn = localStorage.getItem('localtoken');
   //       const response = await axios.get<{ customerAddress?: Address[] }>(`${baseUrl}/customer/getAddresses`, {
   //         headers: {
   //           Authorization: `Bearer ${cookieTokenn}`,

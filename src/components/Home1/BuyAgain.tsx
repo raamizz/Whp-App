@@ -21,7 +21,7 @@ const ProductSlider = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true);
-      const cookieToken = Cookies.get("localtoken");
+      const cookieToken = localStorage.getItem("localtoken");
 
       const response = await axios.get(`${baseUrl}/buyAgain`, {
         headers: { Authorization: `Bearer ${cookieToken}` },
@@ -42,7 +42,9 @@ const ProductSlider = () => {
             {products.length > 0 && (
               <div className="flex justify-between">
                 <div>
-                  <p className="font-semibold text-[1.5rem] uppercase">Buy Again</p>
+                  <p className="font-semibold text-[1.5rem] uppercase">
+                    Buy Again
+                  </p>
                 </div>
                 <div className="flex">
                   <button onClick={() => swiperRef.current.slidePrev()}>

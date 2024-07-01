@@ -200,7 +200,7 @@ const Product: React.FC<ProductProps> = ({ data }) => {
                       alt="This image is temporarry"
                     />
                     {isMobile && (
-                      <div className="float-right absolute flex justify-between bottom-1 right-1 z-0 hover:z-50 ">
+                      <div className="float-right absolute flex justify-between bottom-1 right-1 z-0 hover:z-30 ">
                         <Icon.Cards
                           size={width}
                           weight="light"
@@ -209,12 +209,12 @@ const Product: React.FC<ProductProps> = ({ data }) => {
                       </div>
                     )}
                     {hover && !isMobile && (
-                      <div className="border border-[#e26178] rounded-sm text-center px-2 mt-2 hover:text-white hover:bg-[#e26178] float-right absolute flex justify-between bottom-1 left-1 z-0 hover:z-50">
+                      <div className="border border-[#e26178] rounded-sm text-center px-2 mt-2 hover:text-white hover:bg-[#e26178] float-right absolute flex justify-between bottom-1 left-1 z-0">
                         <p className="font-semibold">Try ON</p>
                       </div>
                     )}
                     {hover && !isMobile && (
-                      <div className="float-right absolute flex justify-between bottom-1 right-1 z-0 hover:z-50 bg-white p-1">
+                      <div className="float-right absolute flex justify-between bottom-1 right-1 z-0 hover:z-30 bg-white p-1">
                         <Icon.Cards
                           size={width}
                           weight="light"
@@ -259,7 +259,7 @@ const Product: React.FC<ProductProps> = ({ data }) => {
                   alt="This image is temporarry"
                 />
                 {hover && !isMobile && (
-                  <div className="border border-[#e26178] rounded-sm text-center px-2 mt-2 hover:text-white hover:bg-[#e26178] float-right absolute flex justify-between bottom-1 left-1 z-0 hover:z-50">
+                  <div className="border border-[#e26178] rounded-sm text-center px-2 mt-2 hover:text-white hover:bg-[#e26178] float-right absolute flex justify-between bottom-1 left-1 z-0">
                     <p className="font-semibold">Try ON</p>
                   </div>
                 )}

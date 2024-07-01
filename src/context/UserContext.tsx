@@ -1,11 +1,17 @@
 "use client";
 
-import React, { createContext, useContext, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useState,
+  useEffect,
+} from "react";
 import { ApolloClient, InMemoryCache, gql, HttpLink } from "@apollo/client";
-import { graphqlbaseUrl } from "@/utils/constants";
+import { graphqlbaseUrl, baseUrl, updateProfile } from "@/utils/constants";
+import instance from "@/utils/axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { createUploadLink } from "apollo-upload-client";
 
 interface UserState {
   isLoggedIn: boolean;
@@ -18,37 +24,24 @@ interface UserContextProps {
   isLoggedIn: boolean;
   logIn: () => void;
   logOut: () => void;
-  addUserDetails: (details: FormValues) => Promise<string>;
+  addUserDetails: (details: UserDetails) => Promise<void>;
   userDetails: UserDetails | null;
   getUser: () => Promise<void>;
 }
 
 interface UserDetails {
-  customer_id: string;
-  fullname: string;
   firstname: string;
   lastname: string;
   email: string;
   mobile_no: string;
-  altPhone: string;
-  dob: string;
+  alternatePhone: string;
   gender: string;
-  profile_picture: string | null;
-  wallet_amount: number;
+  dateOfBirth: string;
+  profile_picture: File | null;
+  customer: any;
 }
 
-interface FormValues {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  altPhone: string;
-  gender: string;
-  dobDay: string;
-  dobMonth: string;
-  dobYear: string;
-  profile_picture: File | null;
-}
+type UserDetailsKeys = keyof UserDetails;
 
 const initialState: UserState = {
   isLoggedIn:
@@ -81,7 +74,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   const [userState, dispatch] = useReducer(userReducer, initialState);
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
   const router = useRouter();
-  const cookieToken = Cookies.get("localtoken");
+  const cookieToken = localStorage.getItem("localtoken");
 
   const logIn = async () => {
     dispatch({ type: "LOG_IN" });
@@ -98,22 +91,24 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     dispatch({ type: "LOG_OUT" });
   };
 
-  const getAuthHeaders = (): Record<string, string> | undefined => {
-    if (!cookieToken) return undefined;
-    return {
-      authorization: `Bearer ${cookieToken}`,
+  const getUser = async () => {
+    const getAuthHeaders = () => {
+      if (!cookieToken) return null;
+      return {
+        authorization: `Bearer ${cookieToken}`,
+      };
     };
-  };
 
-  const client = new ApolloClient({
-    link:new  HttpLink({
+    const link = new HttpLink({
       uri: graphqlbaseUrl,
       headers: getAuthHeaders(),
-    }),
-    cache: new InMemoryCache(),
-  });
+    });
 
-  const getUser = async () => {
+    const client = new ApolloClient({
+      link,
+      cache: new InMemoryCache(),
+    });
+
     const GET_CUSTOMER_DETAILS = gql`
       query GetCustomerDetails($token: String!) {
         getCustomerDetails(token: $token) {
@@ -144,43 +139,27 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  const addUserDetails = async (details: FormValues): Promise<string> => {
+  const addUserDetails = async (details: UserDetails) => {
+    const formData = new FormData();
+
+    Object.keys(details).forEach((key) => {
+      const typedKey = key as UserDetailsKeys;
+      formData.append(typedKey, details[typedKey] as any);
+    });
+
     try {
-      const STORE_CUSTOMER_DETAILS = gql`
-        mutation StoreCustomerDetails($customerDetails: CustomerDetailsInput!) {
-          StoreCustomerDetails(customerDetails: $customerDetails) {
-            message
-          }
+      const response = await instance.post(
+        `${baseUrl}${updateProfile}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${cookieToken}`,
+            "Content-Type": "multipart/form-data",
+          },
         }
-      `;
-
-      const dob = details.dob;
-      const [dobDay, dobMonth, dobYear] = dob?.split("-") ?? ["", "", ""];
-
-      const customerDetails = {
-        firstName: details.firstName,
-        lastName: details.lastName,
-        email: details.email,
-        altPhone: details.altPhone,
-        gender: details.gender,
-        dob: `${dobDay}-${dobMonth}-${dobYear}`,
-        profile_picture: details.profile_picture as File,
-      };
-
-      const { data } = await client.mutate({
-        mutation: STORE_CUSTOMER_DETAILS,
-        variables: {
-          customerDetails: customerDetails,
-        },
-        context: {
-          headers: getAuthHeaders(),
-        },
-        fetchPolicy: "no-cache",
-      });
-
-      console.log("Response from backend:", data);
+      );
       await getUser();
-      return data.StoreCustomerDetails.message;
+      return response.data;
     } catch (error) {
       console.error("Error adding user details:", error);
       throw error;

@@ -78,8 +78,8 @@ const DummyProduct: React.FC<ProductProps> = ({ data }) => {
     setIsProductInWishlist(false);
   };
 
-  const handleDetailProduct = () => {
-    router.push(`/products/${data?.url}`);
+  const handleDetailProduct = (productId:any,productUrl: any) => {
+    router.push(`/products/${productId}/${productUrl}`);
   };
   const formattedDiscountedPrice = Intl.NumberFormat("en-IN").format(
     Math.round(parseFloat(data?.discountPrice ?? 0))
@@ -141,7 +141,7 @@ const DummyProduct: React.FC<ProductProps> = ({ data }) => {
             ) : ( */}
             <div className="relative ">
               <Image
-                onClick={() => handleDetailProduct()}
+                onClick={() => handleDetailProduct(data.productId,data.url)}
                 className="w-[95%] duration-700  m-auto"
                 src={data?.imageDetails[0].image_path}
                 width={400}

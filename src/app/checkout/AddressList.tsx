@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Cookies from 'js-cookie';
-import { baseUrl } from '@/utils/constants';
-import { FaCheckCircle, FaEdit, FaTimes } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { baseUrl } from "@/utils/constants";
+import { FaCheckCircle, FaEdit, FaTimes } from "react-icons/fa";
 
 interface Address {
   address_id: number;
@@ -23,26 +23,32 @@ interface AddressListProps {
   selectedAddress: Address | null;
 }
 
-const AddressList: React.FC<AddressListProps> = ({ onAddressSelect, selectedAddress }) => {
+const AddressList: React.FC<AddressListProps> = ({
+  onAddressSelect,
+  selectedAddress,
+}) => {
   const [addresses, setAddresses] = useState<Address[]>([]);
 
   useEffect(() => {
     const fetchAddresses = async () => {
       try {
-        const cookieTokenn = Cookies.get('localtoken');
-        const response = await axios.get<{ customerAddress?: Address[] }>(`${baseUrl}/customer/getAddresses`, {
-          headers: {
-            Authorization: `Bearer ${cookieTokenn}`,
-          },
-        });
+        const cookieTokenn = localStorage.getItem("localtoken");
+        const response = await axios.get<{ customerAddress?: Address[] }>(
+          `${baseUrl}/customer/getAddresses`,
+          {
+            headers: {
+              Authorization: `Bearer ${cookieTokenn}`,
+            },
+          }
+        );
 
         if (response.data && response.data.customerAddress) {
           setAddresses(response.data.customerAddress);
         } else {
-          console.error('Unexpected API response format');
+          console.error("Unexpected API response format");
         }
       } catch (error) {
-        console.error('Error fetching addresses:', error);
+        console.error("Error fetching addresses:", error);
       }
     };
 
@@ -63,18 +69,22 @@ const AddressList: React.FC<AddressListProps> = ({ onAddressSelect, selectedAddr
             <div
               key={address.address_id}
               className={`border rounded-lg p-4 mb-4 flex items-center justify-between ${
-                selectedAddress?.address_id === address.address_id ? 'bg-gray-200' : ''
+                selectedAddress?.address_id === address.address_id
+                  ? "bg-gray-200"
+                  : ""
               } cursor-pointer`}
               onClick={() => handleAddressSelect(address)}
             >
               <div>
                 <div className="flex items-center space-x-2">
-                  <h3 className="font-semibold">{address.full_address.split(',')[0]}</h3>
+                  <h3 className="font-semibold">
+                    {address.full_address.split(",")[0]}
+                  </h3>
                   {selectedAddress?.address_id === address.address_id && (
                     <FaCheckCircle className="text-green-500 text-xl" />
                   )}
                 </div>
-                <p>{address.full_address.split(',').slice(1).join(', ')}</p>
+                <p>{address.full_address.split(",").slice(1).join(", ")}</p>
                 <p>{`${address.city}, ${address.state}, ${address.country} - ${address.pincode}`}</p>
                 <p>Address Type: {address.address_type}</p>
               </div>

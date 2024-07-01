@@ -7,9 +7,6 @@ export const updateCookie = () => {
   // For example:
   axios.get("/refreshToken").then((response) => {
     const newToken = response.data.token;
-    Cookies.set("localtoken", newToken);
+    localStorage.set("localtoken", newToken);
   });
 };
-
-
-
